@@ -30,7 +30,7 @@ function ProfilePage() {
         try {
 
             const response = await axios.get(
-                `http://localhost:8081/profile/${email}`
+                `https://interviewtracker-backend-2o4l.onrender.com//profile/${email}`
             );
 
             setProfile(response.data);
@@ -63,7 +63,7 @@ function ProfilePage() {
         try {
 
             await axios.put(
-                "http://localhost:8081/profile",
+                "https://interviewtracker-backend-2o4l.onrender.com//profile",
                 profile
             );
 

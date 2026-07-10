@@ -23,7 +23,7 @@ function InterviewCalendar() {
         try {
 
             const response = await axios.get(
-                "http://localhost:8081/calendar"
+                "https://interviewtracker-backend-2o4l.onrender.com//calendar"
             );
 
             const calendarEvents = response.data.map((item) => ({

@@ -11,7 +11,7 @@ function AIReport() {
 
     const loadData = async () => {
         try {
-            const response = await axios.get("http://localhost:8081/preparations");
+            const response = await axios.get("https://interviewtracker-backend-2o4l.onrender.com//preparations");
             setPreparations(response.data);
         } catch (error) {
             console.log(error);
@@ -89,7 +89,7 @@ function AIReport() {
     try {
 
         const response = await axios.get(
-            "http://localhost:8081/report/pdf",
+            "https://interviewtracker-backend-2o4l.onrender.com//report/pdf",
             {
                 responseType: "blob"
             }

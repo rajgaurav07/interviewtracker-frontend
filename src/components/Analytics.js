@@ -39,7 +39,7 @@ function Analytics() {
         try {
 
             const response = await axios.get(
-                "http://localhost:8081/preparations"
+                "https://interviewtracker-backend-2o4l.onrender.com//preparations"
             );
 
             setPreparations(response.data);

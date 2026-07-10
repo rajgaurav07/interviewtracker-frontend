@@ -26,15 +26,15 @@ function Home() {
         try {
 
             const interviewResponse = await axios.get(
-                "http://localhost:8081/interviews"
+                "https://interviewtracker-backend-2o4l.onrender.com//interviews"
             );
 
             const preparationResponse = await axios.get(
-                "http://localhost:8081/preparations"
+                "https://interviewtracker-backend-2o4l.onrender.com//preparations"
             );
 
             const achievementResponse = await axios.get(
-                "http://localhost:8081/achievements"
+                "https://interviewtracker-backend-2o4l.onrender.com//achievements"
             );
 
             const interviews = interviewResponse.data;

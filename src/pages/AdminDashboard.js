@@ -20,7 +20,7 @@ function AdminDashboard() {
         try {
 
             const response = await axios.get(
-                "http://localhost:8081/admin/dashboard"
+                "https://interviewtracker-backend-2o4l.onrender.com//admin/dashboard"
             );
 
             setStats(response.data);

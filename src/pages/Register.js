@@ -25,7 +25,7 @@ function Register() {
     try {
 
       await axios.post(
-        "http://localhost:8081/users/register",
+        "https://interviewtracker-backend-2o4l.onrender.com//users/register",
         user
       );
 
