@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setUser, setToken } from "../utils/Auth";
 
 function Login() {
+
+  const navigate = useNavigate();
 
   const [user, setUserState] = useState({
     email: "",
@@ -29,10 +31,8 @@ function Login() {
       );
 
       if (!response.data || !response.data.token) {
-
         alert("Invalid Email or Password");
         return;
-
       }
 
       alert("Login Successful");
@@ -41,16 +41,25 @@ function Login() {
       setUser(response.data);
       setToken(response.data.token);
 
-      // Save name & email for dashboard
+      // Save name & email
       localStorage.setItem("userName", response.data.name);
       localStorage.setItem("userEmail", response.data.email);
 
-      window.location.href = "/dashboard";
+      // Save role
+      localStorage.setItem("role", response.data.role);
+
+      // React Router navigation
+      navigate("/dashboard");
 
     } catch (error) {
 
-      console.log(error);
-      alert("Login Failed");
+      console.error(error);
+
+      if (error.response) {
+        alert(error.response.data.message || "Login Failed");
+      } else {
+        alert("Unable to connect to server.");
+      }
 
     }
 
@@ -107,19 +116,4 @@ function Login() {
 
           <Link
             to="/register"
-            className="btn btn-success w-100"
-          >
-            Register
-          </Link>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  );
-
-}
-
-export default Login;
+            className="btn
