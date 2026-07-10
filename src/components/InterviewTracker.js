@@ -22,7 +22,7 @@ function InterviewTracker() {
 
   const loadInterviews = async () => {
     try {
-      const result = await axios.get("https://interviewtracker-backend-2o4l.onrender.com//interviews");
+      const result = await axios.get("https://interviewtracker-backend-2o4l.onrender.com/interviews");
       setInterviews(result.data);
     } catch (error) {
       console.log(error);
@@ -44,7 +44,7 @@ function InterviewTracker() {
       if (editId === null) {
 
         await axios.post(
-          "https://interviewtracker-backend-2o4l.onrender.com//interviews",
+          "https://interviewtracker-backend-2o4l.onrender.com/interviews",
           interview
         );
 
@@ -53,7 +53,7 @@ function InterviewTracker() {
       } else {
 
         await axios.put(
-          `https://interviewtracker-backend-2o4l.onrender.com//interviews/${editId}`,
+          `https://interviewtracker-backend-2o4l.onrender.com/interviews/${editId}`,
           interview
         );
 
@@ -98,7 +98,7 @@ function InterviewTracker() {
     if (window.confirm("Delete this interview?")) {
 
       await axios.delete(
-        `https://interviewtracker-backend-2o4l.onrender.com//interviews/${id}`
+        `https://interviewtracker-backend-2o4l.onrender.com/interviews/${id}`
       );
 
       loadInterviews();

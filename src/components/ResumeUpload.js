@@ -15,7 +15,7 @@ function ResumeUpload() {
         try {
 
             const response = await axios.get(
-                "https://interviewtracker-backend-2o4l.onrender.com//resume/latest"
+                "https://interviewtracker-backend-2o4l.onrender.com/resume/latest"
             );
 
             setResume(response.data);
@@ -45,7 +45,7 @@ function ResumeUpload() {
         try {
 
             await axios.post(
-                "https://interviewtracker-backend-2o4l.onrender.com//resume/upload",
+                "https://interviewtracker-backend-2o4l.onrender.com/resume/upload",
                 formData,
                 {
                     headers: {
@@ -77,7 +77,7 @@ function ResumeUpload() {
         if (!window.confirm("Delete Resume?")) return;
 
         await axios.delete(
-            `https://interviewtracker-backend-2o4l.onrender.com//resume/${resume.id}`
+            `https://interviewtracker-backend-2o4l.onrender.com/resume/${resume.id}`
         );
 
         alert("Resume Deleted");
@@ -133,7 +133,7 @@ function ResumeUpload() {
                         </p>
 
                         <a
-                            href={`https://interviewtracker-backend-2o4l.onrender.com//resume/download/${resume.id}`}
+                            href={`https://interviewtracker-backend-2o4l.onrender.com/resume/download/${resume.id}`}
                             className="btn btn-success me-2"
                         >
                             Download

@@ -26,7 +26,7 @@ function PreparationTracker() {
 
     const loadPreparations = async () => {
         try {
-            const response = await axios.get("https://interviewtracker-backend-2o4l.onrender.com//preparations");
+            const response = await axios.get("https://interviewtracker-backend-2o4l.onrender.com/preparations");
             setPreparations(response.data);
         } catch (error) {
             console.log(error);
@@ -48,7 +48,7 @@ function PreparationTracker() {
             if (editId === null) {
 
                 await axios.post(
-                    "https://interviewtracker-backend-2o4l.onrender.com//preparations",
+                    "https://interviewtracker-backend-2o4l.onrender.com/preparations",
                     preparation
                 );
 
@@ -57,7 +57,7 @@ function PreparationTracker() {
             } else {
 
                 await axios.put(
-                    `https://interviewtracker-backend-2o4l.onrender.com//preparations/${editId}`,
+                    `https://interviewtracker-backend-2o4l.onrender.com/preparations/${editId}`,
                     preparation
                 );
 
@@ -110,7 +110,7 @@ function PreparationTracker() {
             try {
 
                 await axios.delete(
-                    `https://interviewtracker-backend-2o4l.onrender.com//preparations/${id}`
+                    `https://interviewtracker-backend-2o4l.onrender.com/preparations/${id}`
                 );
 
                 alert("Deleted Successfully");

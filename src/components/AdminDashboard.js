@@ -17,10 +17,10 @@ function AdminDashboard() {
     const loadData = async () => {
         try {
 
-            const interviews = await axios.get("https://interviewtracker-backend-2o4l.onrender.com//interviews");
-            const preparations = await axios.get("https://interviewtracker-backend-2o4l.onrender.com//preparations");
-            const achievements = await axios.get("https://interviewtracker-backend-2o4l.onrender.com//achievements");
-            const users = await axios.get("https://interviewtracker-backend-2o4l.onrender.com//users");
+            const interviews = await axios.get("https://interviewtracker-backend-2o4l.onrender.com/interviews");
+            const preparations = await axios.get("https://interviewtracker-backend-2o4l.onrender.com/preparations");
+            const achievements = await axios.get("https://interviewtracker-backend-2o4l.onrender.com/achievements");
+            const users = await axios.get("https://interviewtracker-backend-2o4l.onrender.com/users");
 
             setStats({
                 interviews: interviews.data.length,

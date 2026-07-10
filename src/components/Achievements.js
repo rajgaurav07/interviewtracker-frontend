@@ -11,7 +11,7 @@ function Achievements() {
 
     const loadAchievements = async () => {
         try {
-            const response = await axios.get("https://interviewtracker-backend-2o4l.onrender.com//achievements");
+            const response = await axios.get("https://interviewtracker-backend-2o4l.onrender.com/achievements");
             setAchievements(response.data);
         } catch (error) {
             console.log(error);

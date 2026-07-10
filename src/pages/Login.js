@@ -24,7 +24,7 @@ function Login() {
     try {
 
       const response = await axios.post(
-        "https://interviewtracker-backend-2o4l.onrender.com//users/login",
+        "https://interviewtracker-backend-2o4l.onrender.com/users/login",
         user
       );
 
