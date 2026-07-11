@@ -1,55 +1,54 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getToken } from "../utils/Auth";
 
 function ResumeUpload() {
 
     const [file, setFile] = useState(null);
     const [resume, setResume] = useState(null);
 
+    const BASE_URL = "https://interviewtracker-backend-2o4l.onrender.com";
+
     useEffect(() => {
         loadResume();
     }, []);
 
     const loadResume = async () => {
-
         try {
-
             const response = await axios.get(
-                "https://interviewtracker-backend-2o4l.onrender.com/resume/latest"
+                `${BASE_URL}/resume/latest`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${getToken()}`
+                    }
+                }
             );
 
             setResume(response.data);
 
         } catch (error) {
-
             console.log(error);
-
         }
-
     };
 
     const uploadResume = async () => {
 
         if (!file) {
-
             alert("Please select a resume.");
-
             return;
-
         }
 
         const formData = new FormData();
-
         formData.append("file", file);
 
         try {
 
             await axios.post(
-                "https://interviewtracker-backend-2o4l.onrender.com/resume/upload",
+                `${BASE_URL}/resume/upload`,
                 formData,
                 {
                     headers: {
-                        "Content-Type": "multipart/form-data"
+                        Authorization: `Bearer ${getToken()}`
                     }
                 }
             );
@@ -77,7 +76,12 @@ function ResumeUpload() {
         if (!window.confirm("Delete Resume?")) return;
 
         await axios.delete(
-            `https://interviewtracker-backend-2o4l.onrender.com/resume/${resume.id}`
+            `${BASE_URL}/resume/${resume.id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${getToken()}`
+                }
+            }
         );
 
         alert("Resume Deleted");
@@ -93,9 +97,7 @@ function ResumeUpload() {
             <div className="card shadow p-4">
 
                 <h2 className="text-primary mb-4">
-
                     Resume Management
-
                 </h2>
 
                 <input
@@ -109,9 +111,7 @@ function ResumeUpload() {
                     className="btn btn-primary mb-4"
                     onClick={uploadResume}
                 >
-
                     {resume ? "Replace Resume" : "Upload Resume"}
-
                 </button>
 
                 {resume && (
@@ -120,20 +120,12 @@ function ResumeUpload() {
 
                         <h5>Uploaded Resume</h5>
 
-                        <p>
+                        <p><strong>Name:</strong> {resume.fileName}</p>
 
-                            <strong>Name:</strong> {resume.fileName}
-
-                        </p>
-
-                        <p>
-
-                            <strong>Uploaded:</strong> {resume.uploadDate}
-
-                        </p>
+                        <p><strong>Uploaded:</strong> {resume.uploadDate}</p>
 
                         <a
-                            href={`https://interviewtracker-backend-2o4l.onrender.com/resume/download/${resume.id}`}
+                            href={`${BASE_URL}/resume/download/${resume.id}`}
                             className="btn btn-success me-2"
                         >
                             Download
