@@ -35,25 +35,25 @@ function Login() {
         return;
       }
 
-      alert("Login Successful");
-
-      // Save user and token
-      setUser(response.data);
+      // Save token
       setToken(response.data.token);
 
-      // Save name & email
+      // Save complete user object
+      setUser(response.data);
+
+      // Save individual values
       localStorage.setItem("userName", response.data.name);
       localStorage.setItem("userEmail", response.data.email);
-
-      // Save role
       localStorage.setItem("role", response.data.role);
 
-      // React Router navigation
-      navigate("/dashboard");
+      alert("Login Successful");
+
+      // Navigate using React Router
+      navigate("/dashboard", { replace: true });
 
     } catch (error) {
 
-      console.error(error);
+      console.error("Login Error:", error);
 
       if (error.response) {
         alert(error.response.data.message || "Login Failed");
@@ -116,4 +116,19 @@ function Login() {
 
           <Link
             to="/register"
-            className="btn
+            className="btn btn-success w-100"
+          >
+            Register
+          </Link>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  );
+
+}
+
+export default Login;
